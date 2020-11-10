@@ -1,4 +1,5 @@
-﻿using CarServiceCare.Core.Models;
+﻿using CarServiceCare.Core.Contracts;
+using CarServiceCare.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarServiceCare.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T: BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -18,7 +19,7 @@ namespace CarServiceCare.DataAccess.InMemory
         {
             className = typeof(T).Name; //reflection - name of class
             items = cache[className] as List<T>; // check if class exists in cache
-            if(items == null)
+            if (items == null)
             {
                 items = new List<T>();
             }
@@ -38,7 +39,7 @@ namespace CarServiceCare.DataAccess.InMemory
         {
             T tToUpdate = items.Find(i => i.Id == t.Id);
 
-            if(tToUpdate != null)
+            if (tToUpdate != null)
             {
                 tToUpdate = t;
             }
@@ -46,7 +47,7 @@ namespace CarServiceCare.DataAccess.InMemory
             {
                 throw new Exception(className + "Not Found");
             }
-            
+
         }
 
         public T Find(string Id)

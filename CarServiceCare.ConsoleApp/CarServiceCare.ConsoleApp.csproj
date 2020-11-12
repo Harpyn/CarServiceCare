@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DEE0A2C9-E1B6-47A9-B63C-6C6321E35F08}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarServiceCare.Core</RootNamespace>
-    <AssemblyName>CarServiceCare.Core</AssemblyName>
+    <ProjectGuid>{30A7DA7E-CF4B-40FC-9904-F6B29467087E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarServiceCare.ConsoleApp</RootNamespace>
+    <AssemblyName>CarServiceCare.ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,15 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="Enums\CarBrandsEnum.cs" />
-    <Compile Include="Enums\FuelTypesEnum.cs" />
-    <Compile Include="Enums\VehicleTypesEnum.cs" />
-    <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\STK.cs" />
+    <Compile Include="EnumDisplayNameGenerator.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarServiceCare.Core\CarServiceCare.Core.csproj">
+      <Project>{DEE0A2C9-E1B6-47A9-B63C-6C6321E35F08}</Project>
+      <Name>CarServiceCare.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,10 +45,18 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Enums\CarBrandsEnum.cs" />
     <Compile Include="Enums\FuelTypesEnum.cs" />
+    <Compile Include="Enums\PriorityEnum.cs" />
+    <Compile Include="Enums\STKResultEnum.cs" />
     <Compile Include="Enums\VehicleTypesEnum.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\CarInsurance.cs" />
+    <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\Refueling.cs" />
+    <Compile Include="Models\Repair.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Models\STK.cs" />
+    <Compile Include="Models\TireChange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

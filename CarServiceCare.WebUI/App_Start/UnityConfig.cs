@@ -1,4 +1,7 @@
+using CarServiceCare.Core.Contracts;
+using CarServiceCare.Core.Models;
 using System;
+using CarServiceCare.DataAccess.InMemory;
 
 using Unity;
 
@@ -42,6 +45,17 @@ namespace CarServiceCare.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            //Register type's
+            container.RegisterType<IRepository<Car>, InMemoryRepository<Car>>();
+            container.RegisterType<IRepository<CarInsurance>, InMemoryRepository<CarInsurance>>();
+            container.RegisterType<IRepository<Expense>, InMemoryRepository<Expense>>();
+            container.RegisterType<IRepository<Refueling>, InMemoryRepository<Refueling>>();
+            container.RegisterType<IRepository<Repair>, InMemoryRepository<Repair>>();
+            container.RegisterType<IRepository<Service>, InMemoryRepository<Service>>();
+            container.RegisterType<IRepository<STK>, InMemoryRepository<STK>>();
+            container.RegisterType<IRepository<TireChange>, InMemoryRepository<TireChange>>();
+
         }
     }
 }

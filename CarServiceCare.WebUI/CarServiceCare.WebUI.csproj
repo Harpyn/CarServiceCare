@@ -188,6 +188,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -271,6 +273,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarServiceCare.Core\CarServiceCare.Core.csproj">
+      <Project>{dee0a2c9-e1b6-47a9-b63c-6c6321e35f08}</Project>
+      <Name>CarServiceCare.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarServiceCare.DataAccess.InMemory\CarServiceCare.DataAccess.InMemory.csproj">
+      <Project>{dbef0c9f-512b-4521-9a37-c94683ca7e39}</Project>
+      <Name>CarServiceCare.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarServiceCare.DataAccess.SQL\CarServiceCare.DataAccess.SQL.csproj">
+      <Project>{41395718-f781-4b0f-abf9-5adc3d444a6a}</Project>
+      <Name>CarServiceCare.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarServiceCare.Services\CarServiceCare.Services.csproj">
+      <Project>{ad536e19-5d6d-4f5b-ba76-15978c4a6e3d}</Project>
+      <Name>CarServiceCare.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

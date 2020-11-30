@@ -16,10 +16,6 @@ namespace CarServiceCare.DataAccess.SQL
         public DbSet<STK> STK { get; set; }
         public DbSet<TireChange> TireChanges { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-        }
     }
 
 

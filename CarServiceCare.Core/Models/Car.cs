@@ -24,7 +24,6 @@ namespace CarServiceCare.Core.Models
         [Range(0, 2000)]
         public int Power { get; set; }
         [Display(Name = "VIN")]
-        [Range(17, 17)]
         public int VIN { get; set; }
         [Display(Name = "Nájezd")]
         [Range(0, 999999)]

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Car Service Care</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,13 +17,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("CarServiceCare", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Přehledy</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Auta", "Index", "Car")</li>
+                            <li role="menuitem">@Html.ActionLink("Pojištění", "Index", "CarInsurance")</li>
+                            <li role="menuitem">@Html.ActionLink("Výdaje", "Index", "Expense")</li>
+                            <li role="menuitem">@Html.ActionLink("Tankování", "Index", "Refueling")</li>
+                            <li role="menuitem">@Html.ActionLink("Opravy", "Index", "Repair")</li>
+                            <li role="menuitem">@Html.ActionLink("Servis", "Index", "Service")</li>
+                            <li role="menuitem">@Html.ActionLink("STK", "Index", "STK")</li>
+                            <li role="menuitem">@Html.ActionLink("Přezouvání", "Index", "TireChange")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Help", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +45,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Car Service Care</p>
         </footer>
     </div>
 

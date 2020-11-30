@@ -4,6 +4,7 @@ using System;
 using CarServiceCare.DataAccess.InMemory;
 
 using Unity;
+using CarServiceCare.DataAccess.SQL;
 
 namespace CarServiceCare.WebUI
 {
@@ -47,14 +48,32 @@ namespace CarServiceCare.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
 
             //Register type's
-            container.RegisterType<IRepository<Car>, InMemoryRepository<Car>>();
-            container.RegisterType<IRepository<CarInsurance>, InMemoryRepository<CarInsurance>>();
-            container.RegisterType<IRepository<Expense>, InMemoryRepository<Expense>>();
-            container.RegisterType<IRepository<Refueling>, InMemoryRepository<Refueling>>();
-            container.RegisterType<IRepository<Repair>, InMemoryRepository<Repair>>();
-            container.RegisterType<IRepository<Service>, InMemoryRepository<Service>>();
-            container.RegisterType<IRepository<STK>, InMemoryRepository<STK>>();
-            container.RegisterType<IRepository<TireChange>, InMemoryRepository<TireChange>>();
+
+            //store data inMemory or in DB
+            bool inMemory = true;
+
+            if (inMemory)
+            {
+                container.RegisterType<IRepository<Car>, InMemoryRepository<Car>>();
+                container.RegisterType<IRepository<CarInsurance>, InMemoryRepository<CarInsurance>>();
+                container.RegisterType<IRepository<Expense>, InMemoryRepository<Expense>>();
+                container.RegisterType<IRepository<Refueling>, InMemoryRepository<Refueling>>();
+                container.RegisterType<IRepository<Repair>, InMemoryRepository<Repair>>();
+                container.RegisterType<IRepository<Service>, InMemoryRepository<Service>>();
+                container.RegisterType<IRepository<STK>, InMemoryRepository<STK>>();
+                container.RegisterType<IRepository<TireChange>, InMemoryRepository<TireChange>>();
+            }
+            else
+            {
+                container.RegisterType<IRepository<Car>, SQLRepository<Car>>();
+                container.RegisterType<IRepository<CarInsurance>, SQLRepository<CarInsurance>>();
+                container.RegisterType<IRepository<Expense>, SQLRepository<Expense>>();
+                container.RegisterType<IRepository<Refueling>, SQLRepository<Refueling>>();
+                container.RegisterType<IRepository<Repair>, SQLRepository<Repair>>();
+                container.RegisterType<IRepository<Service>, SQLRepository<Service>>();
+                container.RegisterType<IRepository<STK>, SQLRepository<STK>>();
+                container.RegisterType<IRepository<TireChange>, SQLRepository<TireChange>>();
+            }
 
         }
     }

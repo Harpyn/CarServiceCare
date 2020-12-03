@@ -11,14 +11,15 @@
 </p>
 <table class="table">
     <tr>
+        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
+            @Html.DisplayNameFor(model => model.CarBrand)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Note)
+            @Html.DisplayNameFor(model => model.Model)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Photo)
+            @Html.DisplayNameFor(model => model.FuelType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CubicCapacity)
@@ -27,90 +28,52 @@
             @Html.DisplayNameFor(model => model.Power)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VIN)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Kilometer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Owners)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstRegistration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfPurchase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LicensePlate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Category)
         </th>
+      
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CubicCapacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Power)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VIN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kilometer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Owners)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstRegistration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfPurchase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LicensePlate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        <img class="img-thumbnail" style="height:50px" src="~/Content/CarImages/@item.Photo" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarBrand)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FuelType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CubicCapacity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Power)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kilometer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

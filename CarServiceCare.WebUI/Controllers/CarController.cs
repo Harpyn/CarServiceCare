@@ -2,6 +2,7 @@
 using CarServiceCare.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,7 +34,7 @@ namespace CarServiceCare.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Car car)
+        public ActionResult Create(Car car, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -41,6 +42,13 @@ namespace CarServiceCare.WebUI.Controllers
             }
             else
             {
+
+                if (file != null)
+                {
+                    car.Photo = car.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CarImages//") + car.Photo);
+                }
+
                 context.Insert(car);
                 context.Commit();
                 return RedirectToAction("Index");
@@ -62,7 +70,7 @@ namespace CarServiceCare.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Car car, string Id)
+        public ActionResult Edit(Car car, string Id, HttpPostedFileBase file)
         {
             Car carToEdit = context.Find(Id);
             if (carToEdit == null)
@@ -74,6 +82,12 @@ namespace CarServiceCare.WebUI.Controllers
                 if (!ModelState.IsValid)
                 {
                     return View(car);
+                }
+
+                if (file != null)
+                {
+                    car.Photo = car.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CarImages//") + car.Photo);
                 }
 
                 carToEdit.CarBrand = car.CarBrand;
@@ -91,7 +105,6 @@ namespace CarServiceCare.WebUI.Controllers
                 carToEdit.Model = car.Model;
                 carToEdit.Note = car.Note;
                 carToEdit.Owners = car.Owners;
-                carToEdit.Photo = car.Photo;
                 carToEdit.Power = car.Power;
                 carToEdit.Price = car.Price;
                 carToEdit.Refuelings = car.Refuelings;

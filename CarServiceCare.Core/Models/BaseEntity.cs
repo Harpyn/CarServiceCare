@@ -15,7 +15,7 @@ namespace CarServiceCare.Core.Models
         public DateTimeOffset CreatedAt { get; set; }
         [Display(Name = "Poznámka")]
         public string Note { get; set; }
-        [Display(Name = "Fotodokumentace")]
+        [Display(Name = "Foto")]
         public string Photo { get; set; }
 
         public BaseEntity()

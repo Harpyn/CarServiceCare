@@ -31,6 +31,27 @@ namespace CarServiceCare.WebUI.Controllers
             return View(expense);
         }
 
+        [HttpPost]
+        public ActionResult Create(Expense expense, HttpPostedFileBase file)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(expense);
+            }
+            else
+            {
+                if (file != null)
+                {
+                    expense.Photo = expense.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ExpenseImages//") + expense.Photo);
+                }
+
+                context.Insert(expense);
+                context.Commit();
+                return RedirectToAction("Index");
+            }
+
+        }
         public ActionResult Edit(string Id)
         {
             Expense expense = context.Find(Id);

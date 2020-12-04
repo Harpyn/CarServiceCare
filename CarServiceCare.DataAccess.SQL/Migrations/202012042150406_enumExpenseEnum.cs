@@ -3,7 +3,7 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ExpenseEnumAdded : DbMigration
+    public partial class enumExpenseEnum : DbMigration
     {
         public override void Up()
         {

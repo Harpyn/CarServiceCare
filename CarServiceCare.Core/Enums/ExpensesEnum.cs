@@ -21,6 +21,7 @@ namespace CarServiceCare.Core.Enums
         [Display(Name = "Voda do ostřikovačů")]
         WasherWater,
         [Display(Name = "Vůně do auta")]
-        CarSmell
+        CarSmell,
+        
     }
 }

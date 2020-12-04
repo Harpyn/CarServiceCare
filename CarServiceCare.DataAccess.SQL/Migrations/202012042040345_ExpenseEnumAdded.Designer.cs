@@ -7,13 +7,13 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdateCarVehicleTypes : IMigrationMetadata
+    public sealed partial class ExpenseEnumAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateCarVehicleTypes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ExpenseEnumAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012031546155_UpdateCarVehicleTypes"; }
+            get { return "202012042040345_ExpenseEnumAdded"; }
         }
         
         string IMigrationMetadata.Source

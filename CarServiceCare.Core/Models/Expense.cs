@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarServiceCare.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -10,10 +11,11 @@ namespace CarServiceCare.Core.Models
 {
     public class Expense : BaseEntity
     {
+        //Auto na ktere se vykazuje vydaj
         public Car Car { get; set; }
         //Druh
         [Display(Name = "Druh výdaje")]
-        public string Type { get; set; }
+        public ExpensesEnum Type { get; set; }
         //Cena
         [Display(Name = "Cena")]
         [Range(0, 999999)]

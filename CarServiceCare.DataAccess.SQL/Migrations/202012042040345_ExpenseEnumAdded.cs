@@ -3,16 +3,16 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UndoCarCategoryChange : DbMigration
+    public partial class ExpenseEnumAdded : DbMigration
     {
         public override void Up()
         {
-            AlterColumn("dbo.Cars", "Category", c => c.String());
+            AlterColumn("dbo.Expenses", "Type", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Cars", "Category", c => c.Int(nullable: false));
+            AlterColumn("dbo.Expenses", "Type", c => c.String());
         }
     }
 }

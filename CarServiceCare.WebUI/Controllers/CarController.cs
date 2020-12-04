@@ -113,7 +113,7 @@ namespace CarServiceCare.WebUI.Controllers
                 carToEdit.STK = car.STK;
                 carToEdit.TireChanges = car.TireChanges;
                 carToEdit.VehicleType = car.VehicleType;
-                carToEdit.VIN = car.VIN;
+                carToEdit.VIN = car.VIN;                
 
                 context.Commit();
 

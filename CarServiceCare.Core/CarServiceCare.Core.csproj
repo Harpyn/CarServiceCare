@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Enums\CarBrandsEnum.cs" />
+    <Compile Include="Enums\ExpensesEnum.cs" />
     <Compile Include="Enums\FuelTypesEnum.cs" />
     <Compile Include="Enums\PriorityEnum.cs" />
     <Compile Include="Enums\STKResultEnum.cs" />

@@ -53,13 +53,9 @@
     <Compile Include="Migrations\202011292031385_Initial.Designer.cs">
       <DependentUpon>202011292031385_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012031546155_UpdateCarVehicleTypes.cs" />
-    <Compile Include="Migrations\202012031546155_UpdateCarVehicleTypes.Designer.cs">
-      <DependentUpon>202012031546155_UpdateCarVehicleTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012031554062_UndoCarCategoryChange.cs" />
-    <Compile Include="Migrations\202012031554062_UndoCarCategoryChange.Designer.cs">
-      <DependentUpon>202012031554062_UndoCarCategoryChange.cs</DependentUpon>
+    <Compile Include="Migrations\202012042040345_ExpenseEnumAdded.cs" />
+    <Compile Include="Migrations\202012042040345_ExpenseEnumAdded.Designer.cs">
+      <DependentUpon>202012042040345_ExpenseEnumAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,11 +75,8 @@
     <EmbeddedResource Include="Migrations\202011292031385_Initial.resx">
       <DependentUpon>202011292031385_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012031546155_UpdateCarVehicleTypes.resx">
-      <DependentUpon>202012031546155_UpdateCarVehicleTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012031554062_UndoCarCategoryChange.resx">
-      <DependentUpon>202012031554062_UndoCarCategoryChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012042040345_ExpenseEnumAdded.resx">
+      <DependentUpon>202012042040345_ExpenseEnumAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,6 +28,7 @@ namespace CarServiceCare.WebUI.Controllers
         public ActionResult Create()
         {
             CarInsurance carInsurance = new CarInsurance();
+            carInsurance.ValidTo = DateTime.Now;
             return View(carInsurance);
         }
 

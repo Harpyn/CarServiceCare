@@ -35,8 +35,12 @@ namespace CarServiceCare.Core.Models
         [Range(0, 90000000)]
         public decimal Price { get; set; }
         [Display(Name = "Datum první registrace")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FirstRegistration { get; set; }
         [Display(Name = "Datum zakoupení")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfPurchase { get; set; }
         [Display(Name = "Model")]
         public string Model { get; set; }

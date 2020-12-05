@@ -34,6 +34,7 @@ namespace CarServiceCare.WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Car car, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
@@ -70,6 +71,7 @@ namespace CarServiceCare.WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Car car, string Id, HttpPostedFileBase file)
         {
             Car carToEdit = context.Find(Id);
@@ -136,6 +138,7 @@ namespace CarServiceCare.WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {

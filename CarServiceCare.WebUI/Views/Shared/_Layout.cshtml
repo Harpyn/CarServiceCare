@@ -21,19 +21,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Auta", "Index", "Car")</li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Přehledy</a>
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Pojištění</a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
-                            <li role="menuitem">@Html.ActionLink("Auta", "Index", "Car")</li>
-                            <li role="menuitem">@Html.ActionLink("Pojištění", "Index", "CarInsurance")</li>
-                            <li role="menuitem">@Html.ActionLink("Výdaje", "Index", "Expense")</li>
-                            <li role="menuitem">@Html.ActionLink("Tankování", "Index", "Refueling")</li>
-                            <li role="menuitem">@Html.ActionLink("Opravy", "Index", "Repair")</li>
-                            <li role="menuitem">@Html.ActionLink("Servis", "Index", "Service")</li>
-                            <li role="menuitem">@Html.ActionLink("STK", "Index", "STK")</li>
-                            <li role="menuitem">@Html.ActionLink("Přezouvání", "Index", "TireChange")</li>
+                            <li role="menuitem">@Html.ActionLink("Seznam pojištění", "Index", "CarInsurance")</li>
+                            <li role="menuitem">@Html.ActionLink("Vytvořit nové pojištění", "Create", "CarInsurance")</li>
                         </ul>
                     </li>
+                    <li>@Html.ActionLink("Výdaje", "Index", "Expense")</li>
+                    <li>@Html.ActionLink("Tankování", "Index", "Refueling")</li>
+                    <li>@Html.ActionLink("Opravy", "Index", "Repair")</li>
+                    <li>@Html.ActionLink("Servis", "Index", "Service")</li>
+                    <li>@Html.ActionLink("STK", "Index", "STK")</li>
+                    <li>@Html.ActionLink("Přezouvání", "Index", "TireChange")</li>
                     <li>@Html.ActionLink("Help", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                 </ul>

@@ -29,12 +29,48 @@
                             <li role="menuitem">@Html.ActionLink("Vytvořit nové pojištění", "Create", "CarInsurance")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Výdaje", "Index", "Expense")</li>
-                    <li>@Html.ActionLink("Tankování", "Index", "Refueling")</li>
-                    <li>@Html.ActionLink("Opravy", "Index", "Repair")</li>
-                    <li>@Html.ActionLink("Servis", "Index", "Service")</li>
-                    <li>@Html.ActionLink("STK", "Index", "STK")</li>
-                    <li>@Html.ActionLink("Přezouvání", "Index", "TireChange")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Výdaje</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam výdajů", "Index", "Expense")</li>
+                            <li role="menuitem">@Html.ActionLink("Vytvořit nový výdaj", "Create", "Expense")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Tankování</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam tankování", "Index", "Refueling")</li>
+                            <li role="menuitem">@Html.ActionLink("Založit nové tankování", "Create", "Refueling")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Opravy</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam oprav", "Index", "Repair")</li>
+                            <li role="menuitem">@Html.ActionLink("Založit novou opravu", "Create", "Repair")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Servis</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam servisních zásahů", "Index", "Service")</li>
+                            <li role="menuitem">@Html.ActionLink("Založit nový servisní zásah", "Create", "Service")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">STK</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam provedených STK", "Index", "STK")</li>
+                            <li role="menuitem">@Html.ActionLink("Založit nový STK záznam", "Create", "STK")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Přezouvání</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam přezutí", "Index", "TireChange")</li>
+                            <li role="menuitem">@Html.ActionLink("Založit nový záznam o přezutí", "Create", "TireChange")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Help", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                 </ul>

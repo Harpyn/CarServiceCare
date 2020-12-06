@@ -8,7 +8,7 @@
 <h2>Pojištění - Seznam pojištění</h2>
 
 <p>
-    @Html.ActionLink("Vytvořit nové", "Create")
+    @Html.ActionLink("Vytvořit nové", "Create")    
 </p>
 <table class="table">
     <tr>
@@ -61,7 +61,6 @@
         </td>
         <td>
             @Html.ActionLink("Upravit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Zobrazit", "Details", new { id=item.Id }) |
             @Html.ActionLink("Smazat", "Delete", new { id=item.Id })
         </td>
     </tr>

@@ -1,13 +1,13 @@
-﻿@model CarServiceCare.Core.Models.CarInsurance
+﻿@model CarServiceCare.Core.Models.Repair
 
 @{
-    ViewBag.Title = "Pojištění";
+    ViewBag.Title = "Opravy";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pojištění - Smazat pojištění</h2>
+<h2>Opravy - Smazat záznam</h2>
 
-<h3>Jste si jisti, že chcete smazat toto pojištění?</h3>
+<h3>Jste si jisti, že chcete smazat tento záznam?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -36,44 +36,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InsuranceType)
+            @Html.DisplayNameFor(model => model.RepairType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InsuranceType)
+            @Html.DisplayFor(model => model.RepairType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InsuranceCompany)
+            @Html.DisplayNameFor(model => model.EstimatedPrice)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InsuranceCompany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValidTo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValidTo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.EstimatedPrice)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Smazat" class="btn btn-primary" />
+            <input type="submit" value="Smazat" class="btn btn-primary" /> |
             @Html.ActionLink("Zpět na seznam", "Index")
         </div>
     }

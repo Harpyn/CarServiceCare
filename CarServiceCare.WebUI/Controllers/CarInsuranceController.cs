@@ -29,6 +29,8 @@ namespace CarServiceCare.WebUI.Controllers
         {
             CarInsurance carInsurance = new CarInsurance();
             carInsurance.ValidTo = DateTime.Now;
+            carInsurance.CreatedAt = DateTime.Now;
+
             return View(carInsurance);
         }
 

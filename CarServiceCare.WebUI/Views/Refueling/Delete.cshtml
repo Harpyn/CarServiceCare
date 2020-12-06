@@ -1,0 +1,113 @@
+﻿@model CarServiceCare.Core.Models.Refueling
+
+@{
+    ViewBag.Title = "Tankování";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tankování - Smazat tankování</h2>
+
+<h3>Jste si jisti, že chcete smazat toto tankování?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelStation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelStation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Route)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DrivingStyle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DrivingStyle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelConsumption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelConsumption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Liters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Liters)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceForLiter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceForLiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Smazat" class="btn btn-primary" /> |
+            @Html.ActionLink("Zpět na seznam", "Index")
+        </div>
+    }
+</div>

@@ -285,6 +285,12 @@
     <Content Include="Views\STK\Index.cshtml" />
     <Content Include="Views\TireChange\Index.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Refueling\Create.cshtml" />
+    <Content Include="Views\Refueling\Edit.cshtml" />
+    <Content Include="Views\Refueling\Delete.cshtml" />
+    <Content Include="Views\Repair\Create.cshtml" />
+    <Content Include="Views\Repair\Edit.cshtml" />
+    <Content Include="Views\Repair\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

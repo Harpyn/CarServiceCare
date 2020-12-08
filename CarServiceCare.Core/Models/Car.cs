@@ -11,6 +11,8 @@ namespace CarServiceCare.Core.Models
 {
     public class Car : BaseEntity
     {
+        [Display(Name = "Uživatel")]
+        public User User { get; set; }
         [Display(Name = "Výrobce")]
         public CarBrandsEnum CarBrand { get; set; }
         [Display(Name = "Druh")]

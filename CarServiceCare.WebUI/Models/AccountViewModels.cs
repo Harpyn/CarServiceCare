@@ -70,15 +70,32 @@ namespace CarServiceCare.WebUI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musí být alespoň {2} znaků dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Heslo")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrdit heslo")]
+        [Compare("Password", ErrorMessage = "Hesla se neshodují.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Jméno")]
+        [Required]
+        public string FirstName { get; set; }
+        [Display(Name = "Příjmení")]
+        [Required]
+        public string LastName { get; set; }
+
+        [Display(Name = "Ulice")]
+        public string Street { get; set; }
+        [Display(Name = "Město")]
+        public string City { get; set; }
+        [Display(Name = "Stát")]
+        public string State { get; set; }
+        [Display(Name = "PSČ")]
+        public string ZipCode { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -89,14 +106,14 @@ namespace CarServiceCare.WebUI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musí být alespoň {2} znaků dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Hesla se neshodují.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

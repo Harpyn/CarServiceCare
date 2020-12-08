@@ -62,6 +62,7 @@ namespace CarServiceCare.WebUI
                 container.RegisterType<IRepository<Service>, InMemoryRepository<Service>>();
                 container.RegisterType<IRepository<STK>, InMemoryRepository<STK>>();
                 container.RegisterType<IRepository<TireChange>, InMemoryRepository<TireChange>>();
+                container.RegisterType<IRepository<User>, InMemoryRepository<User>>();
             }
             else
             {
@@ -73,6 +74,7 @@ namespace CarServiceCare.WebUI
                 container.RegisterType<IRepository<Service>, SQLRepository<Service>>();
                 container.RegisterType<IRepository<STK>, SQLRepository<STK>>();
                 container.RegisterType<IRepository<TireChange>, SQLRepository<TireChange>>();
+                container.RegisterType<IRepository<User>, SQLRepository<User>>();
             }
 
         }

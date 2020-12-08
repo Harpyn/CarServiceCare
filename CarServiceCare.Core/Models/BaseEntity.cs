@@ -12,9 +12,6 @@ namespace CarServiceCare.Core.Models
     {
         public string Id { get; set; }
 
-
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm:ss}", ApplyFormatInEditMode = true)]
         [Display(Name = "Vytvořeno")]
         public DateTimeOffset CreatedAt { get; set; }
 

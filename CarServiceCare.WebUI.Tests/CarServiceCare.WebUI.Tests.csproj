@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\MockContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -99,6 +100,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarServiceCare.Core\CarServiceCare.Core.csproj">
+      <Project>{DEE0A2C9-E1B6-47A9-B63C-6C6321E35F08}</Project>
+      <Name>CarServiceCare.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarServiceCare.WebUI\CarServiceCare.WebUI.csproj">
       <Project>{193C6768-3930-4C63-959C-0EB9E0435772}</Project>
       <Name>CarServiceCare.WebUI</Name>

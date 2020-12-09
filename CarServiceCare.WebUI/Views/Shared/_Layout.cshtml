@@ -9,17 +9,12 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("CarServiceCare", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <img src="~/Content/img/Logo-black.png" alt="Car service care logo" class="logo-black">
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse nav-style">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Auta", "Index", "Car")</li>
                     <li class="dropdown">
@@ -71,10 +66,12 @@
                             <li role="menuitem">@Html.ActionLink("Založit nový záznam o přezutí", "Create", "TireChange")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Help", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Admin", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    <li class="vl"></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                
+                @Html.Partial("_LoginPartial", new { @class = "nav-style" })
             </div>
         </div>
     </div>

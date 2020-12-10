@@ -41,3 +41,39 @@ textarea {
 .body-content {
     margin-top: 80px;
 }
+
+/* ----- PARAGRAPHS ----- */
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/* ----- ICONS ----- */
+.icon-big {
+    font-size: 350%;
+    display: block;
+    color: #bd2726;
+    margin-bottom: 10px;
+}
+
+/*---------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*---------------------------------------------------*/
+
+.row {
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.col-style {
+    border-style: solid;
+    border-width: 1px 0px 0px 1px;
+    border-color: #eeeeee;
+    box-shadow: inset 3px 1px #fff;
+}

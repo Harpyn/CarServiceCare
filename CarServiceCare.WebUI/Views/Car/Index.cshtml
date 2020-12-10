@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<CarServiceCare.Core.Models.Car>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Přehled vozidla";
 }
 
-<h2>Index</h2>
+<h2>Auta - Přehled vozidel</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Vytvořit nové", "Create")
 </p>
 <table class="table">
     <tr>
@@ -32,9 +32,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
         </th>
       
         <th></th>
@@ -67,11 +64,8 @@
         @Html.DisplayFor(modelItem => item.Price)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Category)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        @Html.ActionLink("Upravit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Smazat", "Delete", new { id = item.Id })
     </td>
 </tr>
 }

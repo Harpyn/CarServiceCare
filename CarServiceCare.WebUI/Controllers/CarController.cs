@@ -94,7 +94,6 @@ namespace CarServiceCare.WebUI.Controllers
 
                 carToEdit.CarBrand = car.CarBrand;
                 carToEdit.CarInsurances = car.CarInsurances;
-                carToEdit.Category = car.Category;
                 carToEdit.Color = car.Color;
                 carToEdit.CreatedAt = car.CreatedAt;
                 carToEdit.CubicCapacity = car.CubicCapacity;

@@ -49,25 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202011292031385_Initial.cs" />
-    <Compile Include="Migrations\202011292031385_Initial.Designer.cs">
-      <DependentUpon>202011292031385_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012042150406_enumExpenseEnum.cs" />
-    <Compile Include="Migrations\202012042150406_enumExpenseEnum.Designer.cs">
-      <DependentUpon>202012042150406_enumExpenseEnum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012081521569_Users.cs" />
-    <Compile Include="Migrations\202012081521569_Users.Designer.cs">
-      <DependentUpon>202012081521569_Users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012081612474_AddUserToCarModel.cs" />
-    <Compile Include="Migrations\202012081612474_AddUserToCarModel.Designer.cs">
-      <DependentUpon>202012081612474_AddUserToCarModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012101554279_CarRemoveCategory.cs" />
-    <Compile Include="Migrations\202012101554279_CarRemoveCategory.Designer.cs">
-      <DependentUpon>202012101554279_CarRemoveCategory.cs</DependentUpon>
+    <Compile Include="Migrations\202012111133532_InitialMigration.cs" />
+    <Compile Include="Migrations\202012111133532_InitialMigration.Designer.cs">
+      <DependentUpon>202012111133532_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,20 +68,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011292031385_Initial.resx">
-      <DependentUpon>202011292031385_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012042150406_enumExpenseEnum.resx">
-      <DependentUpon>202012042150406_enumExpenseEnum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012081521569_Users.resx">
-      <DependentUpon>202012081521569_Users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012081612474_AddUserToCarModel.resx">
-      <DependentUpon>202012081612474_AddUserToCarModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012101554279_CarRemoveCategory.resx">
-      <DependentUpon>202012101554279_CarRemoveCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012111133532_InitialMigration.resx">
+      <DependentUpon>202012111133532_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

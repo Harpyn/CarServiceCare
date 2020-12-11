@@ -12,8 +12,8 @@ namespace CarServiceCare.Core.Models
 {
     public class CarInsurance : BaseEntity
     {
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
-
 
         [Display(Name = "Druh pojištění")]
         public TypeOfInsuranceEnum InsuranceType { get; set; }

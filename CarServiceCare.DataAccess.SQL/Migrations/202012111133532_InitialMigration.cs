@@ -3,7 +3,7 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -12,8 +12,8 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        InsuranceType = c.String(),
-                        InsuranceCompany = c.String(),
+                        InsuranceType = c.Int(nullable: false),
+                        InsuranceCompany = c.Int(nullable: false),
                         ValidTo = c.DateTime(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
@@ -30,12 +30,13 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false),
                         CarBrand = c.Int(nullable: false),
                         VehicleType = c.Int(nullable: false),
                         FuelType = c.Int(nullable: false),
                         CubicCapacity = c.Int(nullable: false),
                         Power = c.Int(nullable: false),
-                        VIN = c.Int(nullable: false),
+                        VIN = c.String(),
                         Kilometer = c.Int(nullable: false),
                         Owners = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -44,19 +45,21 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
                         Model = c.String(),
                         Color = c.String(),
                         LicensePlate = c.String(),
-                        Category = c.String(),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                         Note = c.String(),
                         Photo = c.String(),
+                        User_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.Expenses",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        Type = c.String(),
+                        Type = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                         Note = c.String(),
@@ -127,7 +130,7 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
                 .Index(t => t.Car_Id);
             
             CreateTable(
-                "dbo.STK",
+                "dbo.STKs",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -166,10 +169,30 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
                 .ForeignKey("dbo.Cars", t => t.Car_Id)
                 .Index(t => t.Car_Id);
             
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(nullable: false),
+                        Street = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        ZipCode = c.String(),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                        Note = c.String(),
+                        Photo = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Cars", "User_Id", "dbo.Users");
             DropForeignKey("dbo.TireChanges", "Car_Id", "dbo.Cars");
             DropForeignKey("dbo.STKs", "Car_Id", "dbo.Cars");
             DropForeignKey("dbo.Services", "Car_Id", "dbo.Cars");
@@ -183,7 +206,9 @@ namespace CarServiceCare.DataAccess.SQL.Migrations
             DropIndex("dbo.Repairs", new[] { "Car_Id" });
             DropIndex("dbo.Refuelings", new[] { "Car_Id" });
             DropIndex("dbo.Expenses", new[] { "Car_Id" });
+            DropIndex("dbo.Cars", new[] { "User_Id" });
             DropIndex("dbo.CarInsurances", new[] { "Car_Id" });
+            DropTable("dbo.Users");
             DropTable("dbo.TireChanges");
             DropTable("dbo.STKs");
             DropTable("dbo.Services");

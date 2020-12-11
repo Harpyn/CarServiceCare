@@ -30,6 +30,8 @@ namespace CarServiceCare.WebUI.Controllers
         public ActionResult Create()
         {
             Car car = new Car();
+            car.FirstRegistration = DateTime.Now;
+            car.DateOfPurchase = DateTime.Now;
             return View(car);
         }
 

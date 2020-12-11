@@ -1,5 +1,6 @@
 ﻿using CarServiceCare.Core.Contracts;
 using CarServiceCare.Core.Models;
+using CarServiceCare.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,10 +13,12 @@ namespace CarServiceCare.WebUI.Controllers
     public class CarInsuranceController : Controller
     {
         IRepository<CarInsurance> context;
+        IRepository<Car> carContext;
 
-        public CarInsuranceController(IRepository<CarInsurance> carInsuranceContext)
+        public CarInsuranceController(IRepository<CarInsurance> carInsuranceContext, IRepository<Car> carContextReg)
         {
             context = carInsuranceContext;
+            carContext = carContextReg;
         }
 
         // GET: CarInsurance
@@ -31,26 +34,30 @@ namespace CarServiceCare.WebUI.Controllers
             carInsurance.ValidTo = DateTime.Now;
             carInsurance.CreatedAt = DateTime.Now;
 
-            return View(carInsurance);
+            return View(ReturnViewModel(carInsurance));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CarInsurance carInsurance, HttpPostedFileBase file)
+        public ActionResult Create(AnyModelToCarViewModel<CarInsurance> viewModel, HttpPostedFileBase file)
         {
+
             if (!ModelState.IsValid)
             {
-                return View(carInsurance);
+                return View(ReturnViewModel(viewModel.Model));
             }
             else
             {
                 if (file != null)
                 {
-                    carInsurance.Photo = carInsurance.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//CarInsuranceImages//") + carInsurance.Photo);
+                    viewModel.Model.Photo = viewModel.Model.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CarInsuranceImages//") + viewModel.Model.Photo);
                 }
 
-                context.Insert(carInsurance);
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
+                context.Insert(viewModel.Model);
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -59,19 +66,20 @@ namespace CarServiceCare.WebUI.Controllers
         public ActionResult Edit(string Id)
         {
             CarInsurance carInsurance = context.Find(Id);
+
             if (carInsurance == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(carInsurance);
+                return View(ReturnViewModel(carInsurance));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CarInsurance carInsurance, string Id)
+        public ActionResult Edit(AnyModelToCarViewModel<CarInsurance> viewModel, string Id)
         {
             CarInsurance carInsuranceToEdit = context.Find(Id);
 
@@ -81,19 +89,22 @@ namespace CarServiceCare.WebUI.Controllers
             }
             else
             {
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
                 if (!ModelState.IsValid)
                 {
-                    return View(carInsurance);
+                    return View(ReturnViewModel(carInsuranceToEdit));
                 }
 
-                carInsuranceToEdit.Car = carInsurance.Car;
-                carInsuranceToEdit.CreatedAt = carInsurance.CreatedAt;
-                carInsuranceToEdit.InsuranceCompany = carInsurance.InsuranceCompany;
-                carInsuranceToEdit.InsuranceType = carInsurance.InsuranceType;
-                carInsuranceToEdit.Note = carInsurance.Note;
-                carInsuranceToEdit.Photo = carInsurance.Photo;
-                carInsuranceToEdit.Price = carInsurance.Price;
-                carInsuranceToEdit.ValidTo = carInsurance.ValidTo;
+                carInsuranceToEdit.Car = viewModel.Model.Car;
+                carInsuranceToEdit.CreatedAt = viewModel.Model.CreatedAt;
+                carInsuranceToEdit.InsuranceCompany = viewModel.Model.InsuranceCompany;
+                carInsuranceToEdit.InsuranceType = viewModel.Model.InsuranceType;
+                carInsuranceToEdit.Note = viewModel.Model.Note;
+                carInsuranceToEdit.Photo = viewModel.Model.Photo;
+                carInsuranceToEdit.Price = viewModel.Model.Price;
+                carInsuranceToEdit.ValidTo = viewModel.Model.ValidTo;
 
                 context.Commit();
 
@@ -132,6 +143,16 @@ namespace CarServiceCare.WebUI.Controllers
                 context.Commit();
                 return RedirectToAction("Index");
             }
+        }
+
+        private AnyModelToCarViewModel<CarInsurance> ReturnViewModel(CarInsurance carInsurance)
+        {
+            var viewModel = new AnyModelToCarViewModel<CarInsurance>();
+            viewModel.Cars = carContext.Collection().ToList();
+            viewModel.Model = carInsurance;
+            if (carInsurance.Car != null)
+                viewModel.CarId = string.IsNullOrEmpty(carInsurance.Car.Id) ? null : carInsurance.Car.Id;
+            return viewModel;
         }
     }
 }

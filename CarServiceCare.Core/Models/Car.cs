@@ -13,6 +13,11 @@ namespace CarServiceCare.Core.Models
     {
         [Display(Name = "Uživatel")]
         public User User { get; set; }
+
+        [Display(Name = "Identifikační název")]
+        [Required(ErrorMessage ="Musí být vyplněno pro identifikaci vašeho vozu")]
+        public string Name { get; set; }
+
         [Display(Name = "Výrobce")]
         public CarBrandsEnum CarBrand { get; set; }
         [Display(Name = "Druh")]
@@ -52,7 +57,7 @@ namespace CarServiceCare.Core.Models
         [Display(Name = "SPZ")]
         public string LicensePlate { get; set; }      
 
-        //reference to objects 1:N
+        //reference to objects
         public ICollection<STK> STK { get; set; }
         public ICollection<CarInsurance> CarInsurances { get; set; }
         public ICollection<Expense> Expenses { get; set; }

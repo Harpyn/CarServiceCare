@@ -9,6 +9,8 @@ namespace CarServiceCare.Core.Models
 {
     public class TireChange : BaseEntity
     {
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         //Počet
         [Display(Name = "Množství")]

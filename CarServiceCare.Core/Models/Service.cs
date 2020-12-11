@@ -10,6 +10,8 @@ namespace CarServiceCare.Core.Models
 {
     public class Service : BaseEntity
     {
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         //Kategorie
         [Display(Name = "Druh servisního zásahu")]

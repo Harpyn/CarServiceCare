@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202012050201599_InsuranceEnums.Designer.cs">
       <DependentUpon>202012050201599_InsuranceEnums.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012110741070_UpdateModel.cs" />
+    <Compile Include="Migrations\202012110741070_UpdateModel.Designer.cs">
+      <DependentUpon>202012110741070_UpdateModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,6 +335,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202012050201599_InsuranceEnums.resx">
       <DependentUpon>202012050201599_InsuranceEnums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012110741070_UpdateModel.resx">
+      <DependentUpon>202012110741070_UpdateModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

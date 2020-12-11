@@ -11,6 +11,8 @@ namespace CarServiceCare.Core.Models
 {
     public class Repair : BaseEntity
     {
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         //Oprava
         [Display(Name = "Druh opravy")]

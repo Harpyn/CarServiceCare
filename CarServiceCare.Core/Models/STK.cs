@@ -10,6 +10,8 @@ namespace CarServiceCare.Core.Models
 {
     public class STK : BaseEntity
     {
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         [Display(Name = "Platí do")]
         public DateTime ValidTo { get; set; }

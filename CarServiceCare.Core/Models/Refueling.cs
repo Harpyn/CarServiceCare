@@ -11,6 +11,8 @@ namespace CarServiceCare.Core.Models
 {
     public class Refueling : BaseEntity
     {
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         //Stanice
         [Display(Name = "Čerpací Stanice")]

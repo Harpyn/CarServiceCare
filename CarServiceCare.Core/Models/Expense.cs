@@ -11,7 +11,8 @@ namespace CarServiceCare.Core.Models
 {
     public class Expense : BaseEntity
     {
-        //Auto na ktere se vykazuje vydaj
+
+        [Display(Name = "Auto")]
         public Car Car { get; set; }
         //Druh
         [Display(Name = "Druh výdaje")]

@@ -1,5 +1,6 @@
 ﻿using CarServiceCare.Core.Contracts;
 using CarServiceCare.Core.Models;
+using CarServiceCare.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,10 +13,13 @@ namespace CarServiceCare.WebUI.Controllers
     public class ExpenseController : Controller
     {
         IRepository<Expense> context;
+        IRepository<Car> carContext;
 
-        public ExpenseController(IRepository<Expense> expenseContext)
+
+        public ExpenseController(IRepository<Expense> expenseContext, IRepository<Car> carContextReg)
         {
             context = expenseContext;
+            carContext = carContextReg;
         }
 
         // GET: Expense
@@ -28,26 +32,31 @@ namespace CarServiceCare.WebUI.Controllers
         public ActionResult Create()
         {
             Expense expense = new Expense();
-            return View(expense);
+            expense.CreatedAt = DateTime.Now;
+
+            return View(ReturnViewModel(expense));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Expense expense, HttpPostedFileBase file)
+        public ActionResult Create(AnyModelToCarViewModel<Expense> viewModel, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
-                return View(expense);
+                return View(ReturnViewModel(viewModel.Model));
             }
             else
             {
                 if (file != null)
                 {
-                    expense.Photo = expense.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//ExpenseImages//") + expense.Photo);
+                    viewModel.Model.Photo = viewModel.Model.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ExpenseImages//") + viewModel.Model.Photo);
                 }
 
-                context.Insert(expense);
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
+                context.Insert(viewModel.Model);
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -63,31 +72,35 @@ namespace CarServiceCare.WebUI.Controllers
             }
             else
             {
-                return View(expense);
+                return View(ReturnViewModel(expense));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Expense expense, string Id)
+        public ActionResult Edit(AnyModelToCarViewModel<Expense> viewModel, string Id)
         {
             Expense expenseToEdit = context.Find(Id);
+
             if (expenseToEdit == null)
             {
                 return HttpNotFound();
             }
             else
             {
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
                 if (!ModelState.IsValid)
                 {
-                    return View(expense);
+                    return View(ReturnViewModel(expenseToEdit));
                 }
 
-                expenseToEdit.Car = expense.Car;
-                expenseToEdit.CreatedAt = expense.CreatedAt;
-                expenseToEdit.Type = expense.Type;
-                expenseToEdit.Note = expense.Note;
-                expenseToEdit.Price = expense.Price;         
+                expenseToEdit.Car = viewModel.Model.Car;
+                expenseToEdit.CreatedAt = viewModel.Model.CreatedAt;
+                expenseToEdit.Type = viewModel.Model.Type;
+                expenseToEdit.Note = viewModel.Model.Note;
+                expenseToEdit.Price = viewModel.Model.Price;         
 
                 context.Commit();
 
@@ -127,5 +140,16 @@ namespace CarServiceCare.WebUI.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        private AnyModelToCarViewModel<Expense> ReturnViewModel(Expense expense)
+        {
+            var viewModel = new AnyModelToCarViewModel<Expense>();
+            viewModel.Cars = carContext.Collection().ToList();
+            viewModel.Model = expense;
+            if (expense.Car != null)
+                viewModel.CarId = string.IsNullOrEmpty(expense.Car.Id) ? null : expense.Car.Id;
+            return viewModel;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CarServiceCare.Core.Models.CarInsurance>
+﻿@using CarServiceCare.Core.Enums
+@model IEnumerable<CarServiceCare.Core.Models.CarInsurance>
 
 @{
     ViewBag.Title = "Pojištění";
@@ -8,18 +9,13 @@
 <h2>Pojištění - Seznam pojištění</h2>
 
 <p>
-    @Html.ActionLink("Vytvořit nové", "Create")    
+    @Html.ActionLink("Vytvořit nové", "Create")
 </p>
 <table class="table">
     <tr>
+        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Note)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
+            @Html.DisplayNameFor(model => model.Car.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InsuranceType)
@@ -33,37 +29,41 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InsuranceType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InsuranceCompany)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValidTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Upravit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Smazat", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="img-thumbnail" style="height:50px" src="~/Content/CarInsuranceImages/@item.Photo" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Name)
+            </td>
+            <td>
+                @item.InsuranceType.GetDisplayName()
+            </td>
+            <td>
+                @item.InsuranceCompany.GetDisplayName()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.ActionLink("Upravit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Smazat", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

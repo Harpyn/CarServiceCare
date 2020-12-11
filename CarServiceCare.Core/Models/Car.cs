@@ -1,11 +1,7 @@
-﻿using CarServiceCare.Core.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CarServiceCare.Core.Enums.Car;
 
 namespace CarServiceCare.Core.Models
 {
@@ -14,7 +10,7 @@ namespace CarServiceCare.Core.Models
         [Display(Name = "Uživatel")]
         public User User { get; set; }
 
-        [Display(Name = "Identifikační název")]
+        [Display(Name = "Jméno auta")]
         [Required(ErrorMessage ="Musí být vyplněno pro identifikaci vašeho vozu")]
         public string Name { get; set; }
 
@@ -56,6 +52,7 @@ namespace CarServiceCare.Core.Models
         public string Color { get; set; }
         [Display(Name = "SPZ")]
         public string LicensePlate { get; set; }      
+
 
         //reference to objects
         public ICollection<STK> STK { get; set; }

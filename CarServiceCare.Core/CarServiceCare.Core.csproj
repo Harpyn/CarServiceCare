@@ -44,14 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="Enums\CarBrandsEnum.cs" />
-    <Compile Include="Enums\ExpensesEnum.cs" />
-    <Compile Include="Enums\FuelTypesEnum.cs" />
+    <Compile Include="Enums\Car\CarBrandsEnum.cs" />
+    <Compile Include="Enums\EnumExtensions.cs" />
+    <Compile Include="Enums\Expense\ExpensesEnum.cs" />
+    <Compile Include="Enums\Car\FuelTypesEnum.cs" />
     <Compile Include="Enums\Insurance\InsuranceCompanyEnum.cs" />
     <Compile Include="Enums\Insurance\TypeOfInsuranceEnum.cs" />
-    <Compile Include="Enums\PriorityEnum.cs" />
-    <Compile Include="Enums\STKResultEnum.cs" />
-    <Compile Include="Enums\VehicleTypesEnum.cs" />
+    <Compile Include="Enums\Repair\PriorityEnum.cs" />
+    <Compile Include="Enums\STK\STKResultEnum.cs" />
+    <Compile Include="Enums\Car\VehicleTypesEnum.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarInsurance.cs" />

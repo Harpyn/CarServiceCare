@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace CarServiceCare.Core.Enums
+
+namespace CarServiceCare.Core.Enums.Car
 {
     public enum CarBrandsEnum
     {

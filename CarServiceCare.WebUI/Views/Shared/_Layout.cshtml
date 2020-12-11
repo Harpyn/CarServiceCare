@@ -13,11 +13,19 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <img src="~/Content/img/Logo-black.png" alt="Car service care logo" class="logo-black">
+                <a href="@Url.Action("Index", "Home")" title="Home">
+                    <img src="~/Content/img/Logo-black.png" alt="Car service care logo" class="logo-black">
+                </a>            
             </div>
             <div class="navbar-collapse collapse nav-style">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Auta", "Index", "Car")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Auta</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem">@Html.ActionLink("Seznam vozidel", "Index", "Car")</li>
+                            <li role="menuitem">@Html.ActionLink("Přidat vozidlo", "Create", "Car")</li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">Pojištění</a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">

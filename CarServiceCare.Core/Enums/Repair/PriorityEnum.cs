@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarServiceCare.Core.Enums
+namespace CarServiceCare.Core.Enums.Repair
 {
     public enum PriorityEnum
     {

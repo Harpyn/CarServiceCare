@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarServiceCare.Core.Enums
+namespace CarServiceCare.Core.Enums.STK
 {
     public enum STKResultEnum
     {

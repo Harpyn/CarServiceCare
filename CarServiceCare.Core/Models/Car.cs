@@ -11,7 +11,7 @@ namespace CarServiceCare.Core.Models
         public User User { get; set; }
 
         [Display(Name = "Jméno auta")]
-        [Required(ErrorMessage ="Musí být vyplněno pro identifikaci vašeho vozu")]
+        [Required(ErrorMessage = "Musí být vyplněno pro identifikaci vašeho vozu")]
         public string Name { get; set; }
 
         [Display(Name = "Výrobce")]

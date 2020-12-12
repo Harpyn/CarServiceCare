@@ -188,6 +188,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CarInsuranceController.cs" />
     <Compile Include="Controllers\ExpenseController.cs" />
@@ -296,6 +297,7 @@
     <Content Include="Views\Repair\Create.cshtml" />
     <Content Include="Views\Repair\Edit.cshtml" />
     <Content Include="Views\Repair\Delete.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@ namespace CarServiceCare.Core.Models
         [Display(Name = "Příjmení")]
         public string LastName { get; set; }
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Zadání emailové adresy je povinné")]
+        [Required(ErrorMessage = "Emailová adresa je povinná")]
         [EmailAddress(ErrorMessage = "Nesprávný formát")]
         public string Email { get; set; }
         [Display(Name = "Ulice")]

@@ -64,6 +64,7 @@
     <Compile Include="Models\TireChange.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AnyModelToCarViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

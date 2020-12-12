@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CarServiceCare.Core.Models.Expense>
+﻿@using CarServiceCare.Core.Enums
+@model IEnumerable<CarServiceCare.Core.Models.Expense>
 
 @{
     ViewBag.Title = "Výdaj";
@@ -30,28 +31,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Upravit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Smazat", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Upravit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Smazat", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

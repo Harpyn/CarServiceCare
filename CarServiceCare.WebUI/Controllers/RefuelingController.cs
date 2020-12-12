@@ -1,5 +1,6 @@
 ﻿using CarServiceCare.Core.Contracts;
 using CarServiceCare.Core.Models;
+using CarServiceCare.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,10 +14,12 @@ namespace CarServiceCare.WebUI.Controllers
     public class RefuelingController : Controller
     {
         IRepository<Refueling> context;
+        IRepository<Car> carContext;
 
-        public RefuelingController(IRepository<Refueling> refuelingContext)
+        public RefuelingController(IRepository<Refueling> refuelingContext, IRepository<Car> carContextReg)
         {
             context = refuelingContext;
+            carContext = carContextReg;
         }
 
         // GET: Refueling
@@ -31,26 +34,29 @@ namespace CarServiceCare.WebUI.Controllers
             Refueling refueling = new Refueling();
             refueling.CreatedAt = DateTime.Now;
 
-            return View(refueling);
+            return View(ReturnViewModel(refueling));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Refueling refueling, HttpPostedFileBase file)
+        public ActionResult Create(AnyModelToCarViewModel<Refueling> viewModel, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
-                return View(refueling);
+                return View(ReturnViewModel(viewModel.Model));
             }
             else
             {
                 if (file != null)
                 {
-                    refueling.Photo = refueling.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//RefuelingImages//") + refueling.Photo);
+                    viewModel.Model.Photo = viewModel.Model.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//RefuelingImages//") + viewModel.Model.Photo);
                 }
 
-                context.Insert(refueling);
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
+                context.Insert(viewModel.Model);
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -65,13 +71,13 @@ namespace CarServiceCare.WebUI.Controllers
             }
             else
             {
-                return View(refueling);
+                return View(ReturnViewModel(refueling));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Refueling refueling, string Id)
+        public ActionResult Edit(AnyModelToCarViewModel<Refueling> viewModel, string Id)
         {
             Refueling refuelingToEdit = context.Find(Id);
 
@@ -81,23 +87,26 @@ namespace CarServiceCare.WebUI.Controllers
             }
             else
             {
+                if (viewModel.CarId != null)
+                    viewModel.Model.Car = carContext.Find(viewModel.CarId);
+
                 if (!ModelState.IsValid)
                 {
-                    return View(refueling);
+                    return View(ReturnViewModel(refuelingToEdit));
                 }
 
-                refuelingToEdit.Car = refueling.Car;
-                refuelingToEdit.Note = refueling.Note;
-                refuelingToEdit.Photo = refueling.Photo;
-                refuelingToEdit.Price = refueling.Price;
-                refuelingToEdit.Distance = refueling.Distance;
-                refuelingToEdit.DrivingStyle = refueling.DrivingStyle;
-                refuelingToEdit.FuelConsumption = refueling.FuelConsumption;
-                refuelingToEdit.FuelStation = refueling.FuelStation;
-                refuelingToEdit.FuelType = refueling.FuelType;
-                refuelingToEdit.Liters = refueling.Liters;
-                refuelingToEdit.PriceForLiter = refueling.PriceForLiter;
-                refuelingToEdit.Route = refueling.Route;
+                refuelingToEdit.Car = viewModel.Model.Car;
+                refuelingToEdit.Note = viewModel.Model.Note;
+                refuelingToEdit.Photo = viewModel.Model.Photo;
+                refuelingToEdit.Price = viewModel.Model.Price;
+                refuelingToEdit.Distance = viewModel.Model.Distance;
+                refuelingToEdit.DrivingStyle = viewModel.Model.DrivingStyle;
+                refuelingToEdit.FuelConsumption = viewModel.Model.FuelConsumption;
+                refuelingToEdit.FuelStation = viewModel.Model.FuelStation;
+                refuelingToEdit.FuelType = viewModel.Model.FuelType;
+                refuelingToEdit.Liters = viewModel.Model.Liters;
+                refuelingToEdit.PriceForLiter = viewModel.Model.PriceForLiter;
+                refuelingToEdit.Route = viewModel.Model.Route;
 
                 context.Commit();
 
@@ -136,6 +145,16 @@ namespace CarServiceCare.WebUI.Controllers
                 context.Commit();
                 return RedirectToAction("Index");
             }
+        }
+
+        private AnyModelToCarViewModel<Refueling> ReturnViewModel(Refueling refueling)
+        {
+            var viewModel = new AnyModelToCarViewModel<Refueling>();
+            viewModel.Cars = carContext.Collection().ToList();
+            viewModel.Model = refueling;
+            if (refueling.Car != null)
+                viewModel.CarId = string.IsNullOrEmpty(refueling.Car.Id) ? null : refueling.Car.Id;
+            return viewModel;
         }
     }
 }
